@@ -462,12 +462,55 @@ a:hover { color: #F59E0B; }
 
 @media (max-width: 768px) {
     .carousel-header {
-        height: 700px !important;
+        height: auto !important;
+        min-height: 100vh;
+    }
+
+    .carousel-header .carousel-inner .carousel-item {
+        min-height: 100vh;
+    }
+
+    .carousel-header .carousel-inner .carousel-item .carousel-caption {
+        padding-top: 80px !important;
+        padding-bottom: 60px !important;
+    }
+
+    .carousel-header .carousel-inner .carousel-item .carousel-caption .text-center {
+        padding-top: 40px !important;
+    }
+
+    .carousel-header .carousel-inner .carousel-item .carousel-caption h1 {
+        font-size: 2rem !important;
+    }
+
+    .carousel-header .carousel-inner .carousel-item .carousel-caption h4,
+    .carousel-header .carousel-inner .carousel-item .carousel-caption h5 {
+        font-size: 0.9rem !important;
+        margin-top: 10px;
+    }
+
+    .carousel-header .carousel-inner .carousel-item .carousel-caption p.fs-5 {
+        font-size: 0.95rem !important;
+    }
+
+    .carousel-header .carousel-inner .carousel-item .carousel-caption .wow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .carousel-header .carousel-inner .carousel-item .carousel-caption .wow .btn {
+        margin: 0 !important;
+        width: 80%;
+        max-width: 280px;
     }
 
     .carousel-header .carousel-control-prev .carousel-control-prev-icon,
     .carousel-header .carousel-control-next .carousel-control-next-icon {
-        margin-top: 500px;
+        margin-top: 0;
+        width: 2.5rem;
+        height: 2.5rem;
     }
 
     .carousel-header .carousel-control-prev .carousel-control-prev-icon {
@@ -480,6 +523,13 @@ a:hover { color: #F59E0B; }
 
     .carousel-header .carousel .carousel-indicators {
         padding: 0;
+        margin-bottom: 15px;
+    }
+
+    .trust-badge {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.8rem;
     }
 }
 /*** Carousel Hero Header End ***/
@@ -554,6 +604,9 @@ a:hover { color: #F59E0B; }
 
 .service .service-item .service-inner .service-img img {
     transition: 0.5s;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
 }
 
 .service .service-item:hover .service-inner .service-img img {
