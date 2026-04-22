@@ -167,17 +167,72 @@
                                 <div class="form-group">
                                     <label>Content</label>
                                     <div class="editor-toolbar" id="blog-toolbar">
-                                        <button class="toolbar-btn" data-command="bold" title="Bold"><i class="fas fa-bold"></i></button>
-                                        <button class="toolbar-btn" data-command="italic" title="Italic"><i class="fas fa-italic"></i></button>
-                                        <button class="toolbar-btn" data-command="underline" title="Underline"><i class="fas fa-underline"></i></button>
-                                        <button class="toolbar-btn" data-command="formatBlock" data-value="h2" title="Heading 2">H2</button>
-                                        <button class="toolbar-btn" data-command="formatBlock" data-value="h3" title="Heading 3">H3</button>
-                                        <button class="toolbar-btn" data-command="formatBlock" data-value="p" title="Paragraph">P</button>
-                                        <button class="toolbar-btn" data-command="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></button>
-                                        <button class="toolbar-btn" data-command="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></button>
-                                        <button class="toolbar-btn" data-command="formatBlock" data-value="blockquote" title="Quote"><i class="fas fa-quote-left"></i></button>
-                                        <button class="toolbar-btn" data-command="createLink" title="Add Link"><i class="fas fa-link"></i></button>
-                                        <button class="toolbar-btn" data-command="insertImage" title="Insert Image"><i class="fas fa-image"></i></button>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="undo" title="Undo"><i class="fas fa-undo"></i></button>
+                                            <button class="toolbar-btn" data-command="redo" title="Redo"><i class="fas fa-redo"></i></button>
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <select class="toolbar-select" data-command="formatBlock" title="Block Format">
+                                                <option value="">Format</option>
+                                                <option value="p">Paragraph</option>
+                                                <option value="h1">Heading 1</option>
+                                                <option value="h2">Heading 2</option>
+                                                <option value="h3">Heading 3</option>
+                                                <option value="h4">Heading 4</option>
+                                                <option value="pre">Code Block</option>
+                                            </select>
+                                            <select class="toolbar-select" data-command="fontSize" title="Font Size">
+                                                <option value="">Size</option>
+                                                <option value="1">Small</option>
+                                                <option value="3">Normal</option>
+                                                <option value="4">Medium</option>
+                                                <option value="5">Large</option>
+                                                <option value="6">X-Large</option>
+                                                <option value="7">Huge</option>
+                                            </select>
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="bold" title="Bold (Ctrl+B)"><i class="fas fa-bold"></i></button>
+                                            <button class="toolbar-btn" data-command="italic" title="Italic (Ctrl+I)"><i class="fas fa-italic"></i></button>
+                                            <button class="toolbar-btn" data-command="underline" title="Underline (Ctrl+U)"><i class="fas fa-underline"></i></button>
+                                            <button class="toolbar-btn" data-command="strikeThrough" title="Strikethrough"><i class="fas fa-strikethrough"></i></button>
+                                            <button class="toolbar-btn" data-command="subscript" title="Subscript"><i class="fas fa-subscript"></i></button>
+                                            <button class="toolbar-btn" data-command="superscript" title="Superscript"><i class="fas fa-superscript"></i></button>
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <input type="color" class="toolbar-color" data-command="foreColor" title="Text Color" value="#000000">
+                                            <input type="color" class="toolbar-color" data-command="hiliteColor" title="Highlight Color" value="#FFFF00">
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="justifyLeft" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                            <button class="toolbar-btn" data-command="justifyCenter" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                            <button class="toolbar-btn" data-command="justifyRight" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                            <button class="toolbar-btn" data-command="justifyFull" title="Justify"><i class="fas fa-align-justify"></i></button>
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+                                            <button class="toolbar-btn" data-command="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                                            <button class="toolbar-btn" data-command="indent" title="Increase Indent"><i class="fas fa-indent"></i></button>
+                                            <button class="toolbar-btn" data-command="outdent" title="Decrease Indent"><i class="fas fa-outdent"></i></button>
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="formatBlock" data-value="blockquote" title="Blockquote"><i class="fas fa-quote-left"></i></button>
+                                            <button class="toolbar-btn" data-command="insertHorizontalRule" title="Horizontal Line"><i class="fas fa-minus"></i></button>
+                                            <button class="toolbar-btn" data-command="createLink" title="Insert Link"><i class="fas fa-link"></i></button>
+                                            <button class="toolbar-btn" data-command="unlink" title="Remove Link"><i class="fas fa-unlink"></i></button>
+                                            <button class="toolbar-btn toolbar-upload-btn" data-command="insertImageLocal" title="Insert Image"><i class="fas fa-image"></i></button>
+                                            <input type="file" class="toolbar-inline-file" accept="image/*" style="display:none">
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="removeFormat" title="Clear Formatting"><i class="fas fa-eraser"></i></button>
+                                        </div>
                                     </div>
                                     <div id="blog-editor-content" class="editor-content" contenteditable="true">
                                         <p>Start writing your blog post here...</p>
@@ -248,17 +303,72 @@
                                 <div class="form-group">
                                     <label>Content</label>
                                     <div class="editor-toolbar" id="post-toolbar">
-                                        <button class="toolbar-btn" data-command="bold" title="Bold"><i class="fas fa-bold"></i></button>
-                                        <button class="toolbar-btn" data-command="italic" title="Italic"><i class="fas fa-italic"></i></button>
-                                        <button class="toolbar-btn" data-command="underline" title="Underline"><i class="fas fa-underline"></i></button>
-                                        <button class="toolbar-btn" data-command="formatBlock" data-value="h2" title="Heading 2">H2</button>
-                                        <button class="toolbar-btn" data-command="formatBlock" data-value="h3" title="Heading 3">H3</button>
-                                        <button class="toolbar-btn" data-command="formatBlock" data-value="p" title="Paragraph">P</button>
-                                        <button class="toolbar-btn" data-command="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></button>
-                                        <button class="toolbar-btn" data-command="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></button>
-                                        <button class="toolbar-btn" data-command="formatBlock" data-value="blockquote" title="Quote"><i class="fas fa-quote-left"></i></button>
-                                        <button class="toolbar-btn" data-command="createLink" title="Add Link"><i class="fas fa-link"></i></button>
-                                        <button class="toolbar-btn" data-command="insertImage" title="Insert Image"><i class="fas fa-image"></i></button>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="undo" title="Undo"><i class="fas fa-undo"></i></button>
+                                            <button class="toolbar-btn" data-command="redo" title="Redo"><i class="fas fa-redo"></i></button>
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <select class="toolbar-select" data-command="formatBlock" title="Block Format">
+                                                <option value="">Format</option>
+                                                <option value="p">Paragraph</option>
+                                                <option value="h1">Heading 1</option>
+                                                <option value="h2">Heading 2</option>
+                                                <option value="h3">Heading 3</option>
+                                                <option value="h4">Heading 4</option>
+                                                <option value="pre">Code Block</option>
+                                            </select>
+                                            <select class="toolbar-select" data-command="fontSize" title="Font Size">
+                                                <option value="">Size</option>
+                                                <option value="1">Small</option>
+                                                <option value="3">Normal</option>
+                                                <option value="4">Medium</option>
+                                                <option value="5">Large</option>
+                                                <option value="6">X-Large</option>
+                                                <option value="7">Huge</option>
+                                            </select>
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="bold" title="Bold (Ctrl+B)"><i class="fas fa-bold"></i></button>
+                                            <button class="toolbar-btn" data-command="italic" title="Italic (Ctrl+I)"><i class="fas fa-italic"></i></button>
+                                            <button class="toolbar-btn" data-command="underline" title="Underline (Ctrl+U)"><i class="fas fa-underline"></i></button>
+                                            <button class="toolbar-btn" data-command="strikeThrough" title="Strikethrough"><i class="fas fa-strikethrough"></i></button>
+                                            <button class="toolbar-btn" data-command="subscript" title="Subscript"><i class="fas fa-subscript"></i></button>
+                                            <button class="toolbar-btn" data-command="superscript" title="Superscript"><i class="fas fa-superscript"></i></button>
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <input type="color" class="toolbar-color" data-command="foreColor" title="Text Color" value="#000000">
+                                            <input type="color" class="toolbar-color" data-command="hiliteColor" title="Highlight Color" value="#FFFF00">
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="justifyLeft" title="Align Left"><i class="fas fa-align-left"></i></button>
+                                            <button class="toolbar-btn" data-command="justifyCenter" title="Align Center"><i class="fas fa-align-center"></i></button>
+                                            <button class="toolbar-btn" data-command="justifyRight" title="Align Right"><i class="fas fa-align-right"></i></button>
+                                            <button class="toolbar-btn" data-command="justifyFull" title="Justify"><i class="fas fa-align-justify"></i></button>
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+                                            <button class="toolbar-btn" data-command="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                                            <button class="toolbar-btn" data-command="indent" title="Increase Indent"><i class="fas fa-indent"></i></button>
+                                            <button class="toolbar-btn" data-command="outdent" title="Decrease Indent"><i class="fas fa-outdent"></i></button>
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="formatBlock" data-value="blockquote" title="Blockquote"><i class="fas fa-quote-left"></i></button>
+                                            <button class="toolbar-btn" data-command="insertHorizontalRule" title="Horizontal Line"><i class="fas fa-minus"></i></button>
+                                            <button class="toolbar-btn" data-command="createLink" title="Insert Link"><i class="fas fa-link"></i></button>
+                                            <button class="toolbar-btn" data-command="unlink" title="Remove Link"><i class="fas fa-unlink"></i></button>
+                                            <button class="toolbar-btn toolbar-upload-btn" data-command="insertImageLocal" title="Insert Image"><i class="fas fa-image"></i></button>
+                                            <input type="file" class="toolbar-inline-file" accept="image/*" style="display:none">
+                                        </div>
+                                        <div class="toolbar-divider"></div>
+                                        <div class="toolbar-group">
+                                            <button class="toolbar-btn" data-command="removeFormat" title="Clear Formatting"><i class="fas fa-eraser"></i></button>
+                                        </div>
                                     </div>
                                     <div id="post-editor-content" class="editor-content" contenteditable="true">
                                         <p>Start writing your post here...</p>

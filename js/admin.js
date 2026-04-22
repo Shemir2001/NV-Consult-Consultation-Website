@@ -490,6 +490,7 @@
     }
 
     function setupEditorToolbar(toolbar) {
+        // ── Buttons ──
         toolbar.querySelectorAll('.toolbar-btn').forEach(function (btn) {
             var newBtn = btn.cloneNode(true);
             btn.parentNode.replaceChild(newBtn, btn);
@@ -497,9 +498,82 @@
                 e.preventDefault();
                 var cmd = this.dataset.command;
                 var val = this.dataset.value || null;
-                if (cmd === 'createLink') { var url = prompt('Enter URL:'); if (url) document.execCommand(cmd, false, url); }
-                else if (cmd === 'insertImage') { var imgUrl = prompt('Enter image URL:'); if (imgUrl) document.execCommand(cmd, false, imgUrl); }
-                else { document.execCommand(cmd, false, val); }
+
+                if (cmd === 'createLink') {
+                    var url = prompt('Enter URL:');
+                    if (url) document.execCommand(cmd, false, url);
+                } else if (cmd === 'insertImageLocal') {
+                    // Trigger the hidden file input next to this button
+                    var fileInput = this.parentNode.querySelector('.toolbar-inline-file');
+                    if (fileInput) fileInput.click();
+                } else {
+                    document.execCommand(cmd, false, val);
+                }
+            });
+        });
+
+        // ── Selects (Format Block, Font Size) ──
+        toolbar.querySelectorAll('.toolbar-select').forEach(function (sel) {
+            var newSel = sel.cloneNode(true);
+            sel.parentNode.replaceChild(newSel, sel);
+            newSel.addEventListener('change', function () {
+                var cmd = this.dataset.command;
+                var val = this.value;
+                if (!val) return;
+                if (cmd === 'formatBlock') {
+                    document.execCommand(cmd, false, '<' + val + '>');
+                } else {
+                    document.execCommand(cmd, false, val);
+                }
+                this.selectedIndex = 0; // Reset to label
+            });
+        });
+
+        // ── Color Pickers ──
+        toolbar.querySelectorAll('.toolbar-color').forEach(function (colorInput) {
+            var newColor = colorInput.cloneNode(true);
+            colorInput.parentNode.replaceChild(newColor, colorInput);
+            newColor.addEventListener('input', function () {
+                document.execCommand(this.dataset.command, false, this.value);
+            });
+        });
+
+        // ── Inline Image Upload ──
+        toolbar.querySelectorAll('.toolbar-inline-file').forEach(function (fileInput) {
+            var newFileInput = fileInput.cloneNode(true);
+            fileInput.parentNode.replaceChild(newFileInput, fileInput);
+            newFileInput.addEventListener('change', function () {
+                var file = this.files[0];
+                if (!file) return;
+                if (file.size > 5 * 1024 * 1024) { alert('Image must be under 5MB.'); return; }
+                if (!file.type.startsWith('image/')) { alert('Please select an image file.'); return; }
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    // Insert the image at cursor position in the editor
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '100%';
+                    img.style.height = 'auto';
+                    img.style.borderRadius = '8px';
+                    img.style.margin = '12px 0';
+
+                    // Try to insert at selection
+                    var selection = window.getSelection();
+                    if (selection.rangeCount > 0) {
+                        var range = selection.getRangeAt(0);
+                        range.deleteContents();
+                        range.insertNode(img);
+                        // Move cursor after the image
+                        range.setStartAfter(img);
+                        range.collapse(true);
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                    }
+                };
+                reader.readAsDataURL(file);
+                // Reset so same file can be selected again
+                this.value = '';
             });
         });
     }
